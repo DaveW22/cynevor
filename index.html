@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cynevor Group – delivering innovative business solutions." />
+  <title>Cynevor Group</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home" class="nav-logo">Cynevor Group</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </button>
+      <ul id="nav-menu" class="nav-menu" role="list">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to <span class="highlight">Cynevor Group</span></h1>
+        <p class="hero-subtitle">Innovative solutions driving business growth and excellence.</p>
+        <a href="#services" class="btn btn-primary">Our Services</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-intro">
+          Cynevor Group is a forward-thinking business consultancy committed to delivering
+          tailored strategies that empower organisations to thrive in an ever-changing market.
+          With deep industry expertise and a client-first philosophy, we partner with businesses
+          of every size to unlock their full potential.
+        </p>
+        <div class="about-cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎯</div>
+            <h3>Our Mission</h3>
+            <p>To provide exceptional, results-driven solutions that create lasting value for our clients and communities.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">👁️</div>
+            <h3>Our Vision</h3>
+            <p>To be the most trusted partner for businesses seeking transformative growth and sustainable success.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3>Our Values</h3>
+            <p>Integrity, innovation, collaboration, and a relentless commitment to excellence in everything we do.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-intro">We offer a comprehensive range of services designed to accelerate your business.</p>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">📊</div>
+            <h3>Business Strategy</h3>
+            <p>Data-driven strategic planning to position your organisation for sustained competitive advantage.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🌐</div>
+            <h3>Digital Transformation</h3>
+            <p>End-to-end digital solutions that modernise operations and enhance customer experiences.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🤝</div>
+            <h3>Consulting &amp; Advisory</h3>
+            <p>Expert guidance across finance, operations, marketing, and organisational development.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🚀</div>
+            <h3>Growth &amp; Innovation</h3>
+            <p>Identifying new market opportunities and building the capabilities needed to capture them.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">🔒</div>
+            <h3>Risk Management</h3>
+            <p>Comprehensive frameworks to identify, assess, and mitigate business and operational risks.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">📈</div>
+            <h3>Performance Optimisation</h3>
+            <p>Streamlining processes and leveraging analytics to maximise efficiency and profitability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-intro">Ready to take the next step? Get in touch with the Cynevor Group team today.</p>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <ul class="contact-list" role="list">
+              <li>
+                <span class="contact-icon" aria-hidden="true">📧</span>
+                <a href="mailto:info@cynevorgroup.com">info@cynevorgroup.com</a>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">📞</span>
+                <a href="tel:+441234567890">+44 (0)1234 567 890</a>
+              </li>
+              <li>
+                <span class="contact-icon" aria-hidden="true">📍</span>
+                <address>Cynevor Group, Business District, United Kingdom</address>
+              </li>
+            </ul>
+          </div>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com" autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="How can we help?" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+            <p id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-brand">Cynevor Group</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Cynevor Group. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
