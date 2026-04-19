@@ -1,0 +1,519 @@
+/* =============================================
+   Cynevor Group – Main Stylesheet
+   ============================================= */
+
+/* ---- CSS Variables ---- */
+:root {
+  --color-primary:   #1a3a5c;
+  --color-accent:    #2e86c1;
+  --color-accent-lt: #5dade2;
+  --color-dark:      #0d1b2a;
+  --color-light:     #f4f7fb;
+  --color-white:     #ffffff;
+  --color-text:      #2c3e50;
+  --color-muted:     #6b7c93;
+  --color-border:    #dce3ec;
+  --color-success:   #27ae60;
+  --color-error:     #e74c3c;
+
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-base: 1rem;
+  --line-height: 1.7;
+
+  --radius: 8px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.12);
+  --transition: 0.25s ease;
+
+  --container-max: 1140px;
+  --nav-height: 70px;
+}
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: var(--color-white);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
+
+ul[role="list"] {
+  list-style: none;
+}
+
+/* ---- Layout Helpers ---- */
+.container {
+  width: 90%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 80px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.section-intro {
+  max-width: 680px;
+  margin-inline: auto;
+  text-align: center;
+  color: var(--color-muted);
+  margin-bottom: 3rem;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent-lt);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ---- Navigation ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  height: var(--nav-height);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-inline: 5%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-logo:hover,
+.nav-logo:focus-visible {
+  color: var(--color-accent-lt);
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--color-white);
+  border-bottom-color: var(--color-accent-lt);
+  text-decoration: none;
+}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background-color: var(--color-white);
+  border-radius: 3px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.hamburger {
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after  { top:  8px; }
+
+/* Open state for hamburger */
+.nav-toggle[aria-expanded="true"] .hamburger {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .hamburger::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ---- Hero ---- */
+.hero {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 60%, var(--color-accent) 100%);
+  padding: 4rem 5%;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.highlight {
+  color: var(--color-accent-lt);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2.5rem;
+}
+
+.hero .btn {
+  margin: 0.4rem;
+}
+
+/* ---- About ---- */
+.about {
+  background-color: var(--color-light);
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* ---- Services ---- */
+.services {
+  background-color: var(--color-white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.service-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.service-icon {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
+}
+
+.service-card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* ---- Contact ---- */
+.contact {
+  background-color: var(--color-light);
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-text);
+  font-size: 0.97rem;
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Contact Form */
+.contact-form {
+  background-color: var(--color-white);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(46, 134, 193, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-feedback {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  min-height: 1.4em;
+}
+
+.form-feedback.success { color: var(--color-success); }
+.form-feedback.error   { color: var(--color-error); }
+
+/* ---- Footer ---- */
+.site-footer {
+  background-color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding-block: 2rem;
+}
+
+.footer-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 0.4rem;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: 1.5rem 5% 2rem;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-menu.is-open {
+    display: flex;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.8rem; }
+  .section    { padding-block: 60px; }
+  .contact-form { padding: 1.5rem; }
+}
