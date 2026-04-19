@@ -1,0 +1,22 @@
+{
+  "name": "Cynevor Group",
+  "short_name": "Cynevor",
+  "description": "Family-led practical innovation, education, and community initiatives.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b111b",
+  "theme_color": "#0b111b",
+  "icons": [
+    {
+      "src": "/assets/images/cynevor-logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/cynevor-logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
