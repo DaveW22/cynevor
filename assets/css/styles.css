@@ -592,12 +592,18 @@ main {
   background:
     linear-gradient(145deg, rgba(141, 168, 187, 0.14), rgba(213, 199, 162, 0.12)),
     linear-gradient(180deg, rgba(20, 30, 48, 0.82), rgba(18, 26, 42, 0.86));
-  display: grid;
-  place-items: center;
-  padding: var(--space-3);
-  text-align: center;
-  color: var(--text-subtle);
+  display: block;
+  overflow: hidden;
+  padding: 0;
   box-shadow: var(--shadow-md), var(--shadow-xs);
+}
+
+.media-placeholder img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .split {
