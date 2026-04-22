@@ -79,6 +79,18 @@ img {
   display: block;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -571,6 +583,46 @@ main {
 
 .card h3 {
   margin-bottom: 0.65rem;
+}
+
+.values-page .value-card {
+  display: block;
+  text-align: left;
+  padding-right: 1.45rem;
+}
+
+.values-page .value-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.values-page .value-card-media {
+  width: 4.25rem;
+  margin: 0;
+  margin-left: auto;
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.values-page .value-card-media img {
+  width: 100%;
+  height: auto;
+}
+
+.values-page .value-card p {
+  max-width: none;
+}
+
+.values-page .value-card h2 {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .values-page .value-card-media {
+    width: 3.75rem;
+  }
 }
 
 .pill {
