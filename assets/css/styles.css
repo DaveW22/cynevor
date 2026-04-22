@@ -330,9 +330,7 @@ h3 {
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.nav-item--dropdown:hover > .nav-trigger,
 .nav-item--dropdown:focus-within > .nav-trigger,
-.nav-trigger:hover,
 .nav-trigger:focus-visible,
 .nav-item--dropdown.is-open > .nav-trigger {
   color: var(--text-main);
@@ -340,7 +338,6 @@ h3 {
   border-color: var(--line-faint);
 }
 
-.nav-item--dropdown:hover > .nav-trigger::after,
 .nav-item--dropdown:focus-within > .nav-trigger::after,
 .nav-item--dropdown.is-open > .nav-trigger::after,
 .nav-trigger[aria-expanded="true"]::after {
@@ -387,13 +384,33 @@ h3 {
   color: var(--accent-stone);
 }
 
-.nav-item--dropdown:hover > .nav-submenu,
 .nav-item--dropdown:focus-within > .nav-submenu,
 .nav-item--dropdown.is-open > .nav-submenu {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-item--dropdown:hover > .nav-trigger,
+  .nav-trigger:hover {
+    color: var(--text-main);
+    background: rgba(233, 237, 243, 0.05);
+    border-color: var(--line-faint);
+  }
+
+  .nav-item--dropdown:hover > .nav-trigger::after {
+    transform: rotate(-135deg) translateY(0);
+    opacity: 1;
+  }
+
+  .nav-item--dropdown:hover > .nav-submenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
 }
 
 main {
