@@ -214,4 +214,126 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ── Contact form ────────────────────────────────────
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    const successPanel = document.getElementById("form-success");
+
+    // Field definitions: id suffix, validation function, error message
+    const fields = [
+      {
+        id: "field-name",
+        inputId: "contact-name",
+        validate: (v) => v.trim().length >= 2,
+        error: "Please enter your name."
+      },
+      {
+        id: "field-email",
+        inputId: "contact-email",
+        validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+        error: "Please provide a valid email address."
+      },
+      {
+        id: "field-enquiry-type",
+        inputId: "contact-type",
+        validate: (v) => v !== "",
+        error: "Please select an enquiry type."
+      },
+      {
+        id: "field-message",
+        inputId: "contact-message",
+        validate: (v) => v.trim().length >= 20,
+        error: "Please tell us a little more about your enquiry."
+      }
+    ];
+
+    const setFieldValidity = (field, isValid) => {
+      const wrap = document.getElementById(field.id);
+      if (!wrap) return;
+      wrap.classList.toggle("is-invalid", !isValid);
+    };
+
+    // Live validation: clear error as soon as field becomes valid
+    fields.forEach((field) => {
+      const input = document.getElementById(field.inputId);
+      if (!input) return;
+      const eventType = input.tagName === "SELECT" ? "change" : "input";
+      input.addEventListener(eventType, () => {
+        if (field.validate(input.value)) {
+          setFieldValidity(field, true);
+        }
+      });
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      // ── Honeypot check ──────────────────────────────
+      const trap = contactForm.querySelector('[name="trap"]');
+      if (trap && trap.value !== "") {
+        // Bot detected — silently discard
+        return;
+      }
+
+      // ── Validate required fields ────────────────────
+      let isFormValid = true;
+      let firstInvalidInput = null;
+
+      fields.forEach((field) => {
+        const input = document.getElementById(field.inputId);
+        if (!input) return;
+        const valid = field.validate(input.value);
+        setFieldValidity(field, valid);
+        if (!valid) {
+          isFormValid = false;
+          if (!firstInvalidInput) firstInvalidInput = input;
+        }
+      });
+
+      if (!isFormValid) {
+        if (firstInvalidInput) firstInvalidInput.focus();
+        return;
+      }
+
+      // ── Submit ──────────────────────────────────────
+      //
+      // BACKEND INTEGRATION POINT
+      // ─────────────────────────
+      // Replace the block below with a real fetch() call once a backend
+      // endpoint is available.
+      //
+      // Example (Formspree):
+      //   const data = new FormData(contactForm);
+      //   fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      //     method: "POST",
+      //     body: data,
+      //     headers: { Accept: "application/json" }
+      //   })
+      //     .then((res) => { if (res.ok) showSuccess(); else showError(); })
+      //     .catch(() => showError());
+      //
+      // Example (Netlify Forms — no JS needed; just ensure data-netlify="true"):
+      //   const data = new FormData(contactForm);
+      //   fetch("/", { method: "POST", body: data })
+      //     .then(() => showSuccess())
+      //     .catch(() => showError());
+      //
+      // Until a backend is connected, we show the success state directly.
+
+      showSuccess();
+    });
+
+    const showSuccess = () => {
+      contactForm.style.display = "none";
+      if (successPanel) {
+        successPanel.classList.add("is-visible");
+        successPanel.focus();
+      }
+      // Scroll the success message into view smoothly
+      if (successPanel && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        successPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    };
+  }
 });

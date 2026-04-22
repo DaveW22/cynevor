@@ -1248,6 +1248,179 @@ main {
   max-width: 60ch;
 }
 
+.cta-closing-note {
+  margin-top: 1.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+  opacity: 0.72;
+}
+
+/* ── Contact form ──────────────────────────────────── */
+.contact-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.form-field label .field-required {
+  color: var(--accent-stone);
+  margin-left: 0.2em;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  background: rgba(228, 236, 246, 0.04);
+  border: 1px solid rgba(233, 237, 243, 0.16);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.93rem;
+  padding: 0.72rem 0.95rem;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2397a6bb' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.4rem;
+  cursor: pointer;
+}
+
+.form-field select option {
+  background: var(--bg-slate);
+  color: var(--text-main);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.6;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--text-subtle);
+  opacity: 0.55;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: rgba(141, 168, 187, 0.55);
+  box-shadow: 0 0 0 3px rgba(141, 168, 187, 0.1);
+}
+
+/* invalid state — applied by JS validation */
+.form-field.is-invalid input,
+.form-field.is-invalid select,
+.form-field.is-invalid textarea {
+  border-color: rgba(216, 184, 149, 0.55);
+  box-shadow: 0 0 0 3px rgba(216, 184, 149, 0.08);
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: var(--accent-dawn);
+  margin: 0;
+  min-height: 1em;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.form-field.is-invalid .field-error {
+  opacity: 1;
+}
+
+/* success state */
+.form-success {
+  display: none;
+  border: 1px solid rgba(141, 168, 187, 0.22);
+  border-radius: var(--radius-lg);
+  background: rgba(141, 168, 187, 0.07);
+  padding: var(--space-5) var(--space-5);
+  text-align: center;
+}
+
+.form-success.is-visible {
+  display: block;
+}
+
+.form-success h3 {
+  margin-bottom: var(--space-2);
+  color: var(--text-main);
+}
+
+.form-success p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  margin: 0;
+}
+
+/* honeypot — visually hidden, off-screen for screen readers too */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.form-privacy-note {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 @keyframes revealUp {
   from {
     opacity: 0;
