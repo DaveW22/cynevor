@@ -758,6 +758,35 @@ main {
   margin-bottom: var(--space-2);
 }
 
+/* ── Progress cards ────────────────────────────────── */
+.progress-card .status-pill {
+  display: inline-block;
+  padding: 0.18rem 0.52rem;
+  border: 1px solid rgba(233, 237, 243, 0.15);
+  border-radius: 999px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  background: rgba(228, 236, 246, 0.05);
+  margin-top: 0.65rem;
+  margin-bottom: 0;
+}
+
+.progress-card .progress-next {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line-faint);
+  font-size: 0.78rem;
+  color: var(--text-subtle);
+  margin-bottom: 0;
+}
+
+.progress-card .progress-next strong {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
 .media-placeholder {
   min-height: 220px;
   border-radius: var(--radius-xl);
