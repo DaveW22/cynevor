@@ -139,4 +139,53 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", setTrackerProgress, { passive: true });
     window.addEventListener("resize", setTrackerProgress);
   }
+
+  // ── Academy carousel ────────────────────────────────
+  const carousel = document.querySelector(".academy-carousel");
+  if (carousel) {
+    const slides  = Array.from(carousel.querySelectorAll(".academy-carousel-slide"));
+    const dots    = Array.from(carousel.querySelectorAll(".academy-carousel-dot"));
+    const prevBtn = carousel.querySelector(".academy-carousel-prev");
+    const nextBtn = carousel.querySelector(".academy-carousel-next");
+    let current   = 0;
+    let timer     = null;
+
+    const goTo = (index) => {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+    };
+
+    const advance = () => goTo(current + 1);
+
+    const start = () => {
+      clearInterval(timer);
+      // 6 s visible + 1 s fade = each image is fully on-screen for 6 s
+      timer = setInterval(advance, 7000);
+    };
+
+    // Manual navigation — resets the auto-advance so it doesn't
+    // cut in immediately after the user navigates
+    prevBtn.addEventListener("click", () => { goTo(current - 1); start(); });
+    nextBtn.addEventListener("click", () => { goTo(current + 1); start(); });
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        goTo(parseInt(dot.dataset.index, 10));
+        start();
+      });
+    });
+
+    start();
+
+    // Pause while the tab is hidden, resume on return
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(timer);
+      } else {
+        start();
+      }
+    });
+  }
 });
