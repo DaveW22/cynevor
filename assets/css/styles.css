@@ -347,7 +347,7 @@ h3 {
 
 .nav-submenu {
   position: absolute;
-  top: calc(100% + 0.45rem);
+  top: 100%;
   left: 0;
   min-width: 15.5rem;
   padding: 0.52rem;
