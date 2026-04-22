@@ -9,12 +9,12 @@
   "theme_color": "#0b111b",
   "icons": [
     {
-      "src": "/assets/images/cynevor-logo-icon.png",
+      "src": "/assets/images/cynevor-app-icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/assets/images/cynevor-logo-icon.png",
+      "src": "/assets/images/cynevor-app-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
