@@ -143,12 +143,37 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Academy carousel ────────────────────────────────
   const carousel = document.querySelector(".academy-carousel");
   if (carousel) {
+    const track   = carousel.querySelector(".academy-carousel-track");
     const slides  = Array.from(carousel.querySelectorAll(".academy-carousel-slide"));
     const dots    = Array.from(carousel.querySelectorAll(".academy-carousel-dot"));
     const prevBtn = carousel.querySelector(".academy-carousel-prev");
     const nextBtn = carousel.querySelector(".academy-carousel-next");
+
+    if (!track || !slides.length || !dots.length || !prevBtn || !nextBtn) {
+      return;
+    }
+
     let current   = 0;
     let timer     = null;
+
+    // Safari fallback: force carousel layering/visibility in JS in case
+    // class-based CSS is not fully applied due caching or parser differences.
+    const applySlideState = () => {
+      slides.forEach((slide, index) => {
+        const isActive = index === current;
+        slide.style.position = "absolute";
+        slide.style.top = "0";
+        slide.style.left = "0";
+        slide.style.width = "100%";
+        slide.style.height = "100%";
+        slide.style.opacity = isActive ? "1" : "0";
+        slide.style.pointerEvents = isActive ? "auto" : "none";
+      });
+    };
+
+    track.style.position = "relative";
+    track.style.height = "100%";
+    applySlideState();
 
     const goTo = (index) => {
       slides[current].classList.remove("is-active");
@@ -156,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       current = (index + slides.length) % slides.length;
       slides[current].classList.add("is-active");
       dots[current].classList.add("is-active");
+      applySlideState();
     };
 
     const advance = () => goTo(current + 1);
