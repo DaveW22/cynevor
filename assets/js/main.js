@@ -225,33 +225,46 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         id: "field-name",
         inputId: "contact-name",
+        errorId: "error-name",
         validate: (v) => v.trim().length >= 2,
         error: "Please enter your name."
       },
       {
         id: "field-email",
         inputId: "contact-email",
+        errorId: "error-email",
         validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
         error: "Please provide a valid email address."
       },
       {
         id: "field-enquiry-type",
         inputId: "contact-type",
+        errorId: "error-type",
         validate: (v) => v !== "",
         error: "Please select an enquiry type."
       },
       {
         id: "field-message",
         inputId: "contact-message",
+        errorId: "error-message",
         validate: (v) => v.trim().length >= 20,
         error: "Please tell us a little more about your enquiry."
       }
     ];
 
-    const setFieldValidity = (field, isValid) => {
+    const setFieldValidity = (field, input, isValid) => {
       const wrap = document.getElementById(field.id);
       if (!wrap) return;
       wrap.classList.toggle("is-invalid", !isValid);
+
+      if (input) {
+        input.setAttribute("aria-invalid", String(!isValid));
+      }
+
+      const errorMessage = document.getElementById(field.errorId);
+      if (errorMessage) {
+        errorMessage.hidden = isValid;
+      }
     };
 
     // Live validation: clear error as soon as field becomes valid
@@ -260,9 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!input) return;
       const eventType = input.tagName === "SELECT" ? "change" : "input";
       input.addEventListener(eventType, () => {
-        if (field.validate(input.value)) {
-          setFieldValidity(field, true);
-        }
+        setFieldValidity(field, input, field.validate(input.value));
       });
     });
 
@@ -284,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const input = document.getElementById(field.inputId);
         if (!input) return;
         const valid = field.validate(input.value);
-        setFieldValidity(field, valid);
+        setFieldValidity(field, input, valid);
         if (!valid) {
           isFormValid = false;
           if (!firstInvalidInput) firstInvalidInput = input;

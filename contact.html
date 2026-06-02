@@ -116,6 +116,7 @@
                   <p class="nav-submenu-title">Ventures</p>
                   <a href="academy.html">Academy</a>
                   <a href="foundation.html">Foundation</a>
+                  <a href="ventures.html">Ventures</a>
                 </div>
               </div>
             </li>
@@ -268,6 +269,40 @@
         </div>
       </section>
 
+      <section class="section" aria-labelledby="contact-enquiry-flow-heading">
+        <div class="container">
+          <p class="eyebrow">How an enquiry works</p>
+          <h2 class="section-title" id="contact-enquiry-flow-heading">A simple process from first message to next step</h2>
+          <div class="grid grid-3" style="margin-top: var(--space-5);">
+            <article class="card">
+              <span class="pill">1</span>
+              <h3>You share context</h3>
+              <p>You send a clear summary of your enquiry and current priorities.</p>
+            </article>
+            <article class="card">
+              <span class="pill">2</span>
+              <h3>We review fit</h3>
+              <p>We review whether your enquiry aligns with Cynevor's focus and capacity.</p>
+            </article>
+            <article class="card">
+              <span class="pill">3</span>
+              <h3>We arrange an initial conversation</h3>
+              <p>If aligned, we arrange an initial conversation to explore context in more depth.</p>
+            </article>
+            <article class="card">
+              <span class="pill">4</span>
+              <h3>We outline possible next steps</h3>
+              <p>We outline practical options for direction, scope, and collaboration approach.</p>
+            </article>
+            <article class="card">
+              <span class="pill">5</span>
+              <h3>If useful, we define scope and proposal</h3>
+              <p>Where appropriate, we define scope and a proposal for the next phase.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="contact-form-section" aria-labelledby="contact-form-heading">
         <div class="container split">
 
@@ -303,7 +338,7 @@
           <div class="contact-form-wrap">
 
             <!-- Success state (shown on valid submission) -->
-            <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="form-success" id="form-success" role="status" aria-live="polite" tabindex="-1">
               <h3>Thank you for getting in touch.</h3>
               <p>Your enquiry has been received. We will review fit and respond with next steps as soon as possible.</p>
             </div>
@@ -321,7 +356,6 @@
               id="contact-form"
               action="#"
               method="POST"
-              novalidate
               aria-label="Contact enquiry form"
             >
 
@@ -347,7 +381,7 @@
                     aria-describedby="error-name"
                     placeholder="Your full name"
                   />
-                  <p class="field-error" id="error-name" role="alert">Please enter your name.</p>
+                  <p class="field-error" id="error-name" aria-live="polite" hidden>Please enter your name.</p>
                 </div>
 
                 <div class="form-field" id="field-email">
@@ -364,7 +398,7 @@
                     aria-describedby="error-email"
                     placeholder="your@email.com"
                   />
-                  <p class="field-error" id="error-email" role="alert">Please provide a valid email address.</p>
+                  <p class="field-error" id="error-email" aria-live="polite" hidden>Please provide a valid email address.</p>
                 </div>
               </div>
 
@@ -412,7 +446,7 @@
                   <option value="Academy or Foundation Enquiry">Academy or Foundation Enquiry</option>
                   <option value="General Enquiry">General Enquiry</option>
                 </select>
-                <p class="field-error" id="error-type" role="alert">Please select an enquiry type.</p>
+                <p class="field-error" id="error-type" aria-live="polite" hidden>Please select an enquiry type.</p>
               </div>
 
               <!-- Message -->
@@ -428,7 +462,7 @@
                   aria-describedby="error-message"
                   placeholder="Please tell us a little about your enquiry&hellip;"
                 ></textarea>
-                <p class="field-error" id="error-message" role="alert">Please tell us a little more about your enquiry.</p>
+                <p class="field-error" id="error-message" aria-live="polite" hidden>Please tell us a little more about your enquiry.</p>
               </div>
 
               <!-- Submit row -->
@@ -488,6 +522,7 @@
                   <li><a href="academy.html">Academy</a></li>
                   <li><a href="careers.html">Careers</a></li>
                   <li><a href="foundation.html">Foundation</a></li>
+                  <li><a href="ventures.html">Ventures</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>
               </section>
@@ -510,11 +545,11 @@
               <li><a href="https://www.facebook.com/cynevor" aria-label="Cynevor Group on Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>
               <!-- Placeholder social links: replace with official profiles at launch. -->
               <li><a href="https://www.youtube.com/@Cynevor" aria-label="Cynevor Group on YouTube" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-              <li><a href="#" aria-label="Instagram profile coming soon">Instagram</a></li>
+              <li><span aria-label="Instagram profile coming soon">Instagram (coming soon)</span></li>
             </ul>
           </article>
         </div>
-        <p class="footer-fine">&copy; 2026 Cynevor. Cynevor™ and Cynevor Group™ are trade marks claimed by the founder of the Cynevor project. All rights reserved.</p>
+        <p class="footer-fine">&copy; 2026 Cynevor. Cynevor™ and Cynevor Group™ are founder-owned trade marks claimed in connection with the Cynevor project. All rights reserved.</p>
       </div>
     </footer>
   </body>

@@ -787,6 +787,19 @@ main {
   font-weight: 500;
 }
 
+.status-key {
+  border-style: dashed;
+}
+
+.status-key-list {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.status-key-list li + li {
+  margin-top: 0.45rem;
+}
+
 .media-placeholder {
   min-height: 220px;
   border-radius: var(--radius-xl);
@@ -1036,6 +1049,11 @@ main {
 .footer-links a,
 .social-links a {
   font-size: 0.84rem;
+}
+
+.social-links span {
+  font-size: 0.84rem;
+  color: var(--text-subtle);
 }
 
 .footer-links a,
