@@ -3,13 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.getElementById("site-nav");
   const dropdownItems = nav ? Array.from(nav.querySelectorAll(".nav-item--dropdown")) : [];
 
+  const setSubmenuState = (item, isOpen) => {
+    const trigger = item.querySelector(".nav-trigger");
+    const submenu = item.querySelector(".nav-submenu");
+
+    item.classList.toggle("is-open", isOpen);
+
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", String(isOpen));
+    }
+
+    if (submenu) {
+      submenu.setAttribute("aria-hidden", String(!isOpen));
+      submenu.querySelectorAll("a").forEach((link) => {
+        if (isOpen) {
+          link.removeAttribute("tabindex");
+        } else {
+          link.setAttribute("tabindex", "-1");
+        }
+      });
+    }
+  };
+
   const closeDropdowns = () => {
     dropdownItems.forEach((item) => {
-      item.classList.remove("is-open");
-      const trigger = item.querySelector(".nav-trigger");
-      if (trigger) {
-        trigger.setAttribute("aria-expanded", "false");
-      }
+      setSubmenuState(item, false);
     });
   };
 
@@ -29,16 +47,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dropdownItems.forEach((item) => {
       const trigger = item.querySelector(".nav-trigger");
+      const submenu = item.querySelector(".nav-submenu");
       if (!trigger) {
         return;
+      }
+
+      if (submenu) {
+        setSubmenuState(item, false);
       }
 
       trigger.addEventListener("click", () => {
         const currentlyOpen = item.classList.contains("is-open");
         closeDropdowns();
         if (!currentlyOpen) {
-          item.classList.add("is-open");
-          trigger.setAttribute("aria-expanded", "true");
+          setSubmenuState(item, true);
+        }
+      });
+
+      trigger.addEventListener("focus", () => {
+        closeDropdowns();
+        setSubmenuState(item, true);
+      });
+
+      item.addEventListener("focusout", () => {
+        window.setTimeout(() => {
+          if (!item.contains(document.activeElement)) {
+            setSubmenuState(item, false);
+          }
+        }, 0);
+      });
+
+      item.addEventListener("mouseenter", () => {
+        setSubmenuState(item, true);
+      });
+
+      item.addEventListener("mouseleave", () => {
+        if (!item.contains(document.activeElement)) {
+          setSubmenuState(item, false);
         }
       });
     });
@@ -220,6 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     const successPanel = document.getElementById("form-success");
 
+    if (successPanel) {
+      successPanel.hidden = true;
+      successPanel.setAttribute("aria-hidden", "true");
+    }
+
     // Field definitions: id suffix, validation function, error message
     const fields = [
       {
@@ -258,7 +308,11 @@ document.addEventListener("DOMContentLoaded", () => {
       wrap.classList.toggle("is-invalid", !isValid);
 
       if (input) {
-        input.setAttribute("aria-invalid", String(!isValid));
+        if (isValid) {
+          input.removeAttribute("aria-invalid");
+        } else {
+          input.setAttribute("aria-invalid", "true");
+        }
       }
 
       const errorMessage = document.getElementById(field.errorId);
@@ -338,6 +392,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const showSuccess = () => {
       contactForm.style.display = "none";
       if (successPanel) {
+        successPanel.hidden = false;
+        successPanel.setAttribute("aria-hidden", "false");
+        successPanel.setAttribute("role", "status");
+        successPanel.setAttribute("aria-live", "polite");
         successPanel.classList.add("is-visible");
         successPanel.focus();
       }

@@ -3,27 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Cynevor | Cynevor Group</title>
+    <title>Contact Cynevor</title>
     <meta
       name="description"
-      content="Contact Cynevor Group to discuss a digital project, partnership, strategic conversation, or general enquiry. We welcome thoughtful, purpose-led conversations."
+      content="Contact Cynevor to discuss a digital project, partnership, strategic conversation, or general enquiry. We welcome thoughtful, purpose-led conversations."
     />
-    <meta property="og:title" content="Contact Cynevor | Cynevor Group" />
+    <meta property="og:title" content="Contact Cynevor" />
     <meta
       property="og:description"
-      content="Get in touch with Cynevor Group to discuss projects, partnerships, academy or foundation interest, or strategic conversations."
+      content="Get in touch with Cynevor to discuss projects, partnerships, academy or foundation interest, or strategic conversations."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cynevor.com/contact.html" />
     <meta property="og:image" content="https://cynevor.com/assets/images/Cynevor-hero.png" />
-    <meta property="og:site_name" content="Cynevor Group" />
+    <meta property="og:site_name" content="Cynevor" />
     <link rel="canonical" href="https://cynevor.com/contact.html" />
     <!-- SEO_META_START -->
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta property="og:locale" content="en_GB" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Contact Cynevor | Cynevor Group" />
-    <meta name="twitter:description" content="Contact Cynevor Group to discuss a digital project, partnership, strategic conversation, or general enquiry." />
+    <meta name="twitter:title" content="Contact Cynevor" />
+    <meta name="twitter:description" content="Contact Cynevor to discuss a digital project, partnership, strategic conversation, or general enquiry." />
     <meta name="twitter:image" content="https://cynevor.com/assets/images/Cynevor-hero.png" />
     <meta name="theme-color" content="#0b111b" />
     <link rel="manifest" href="site.webmanifest" />
@@ -34,6 +34,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="assets/js/accessibility-settings.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer src="assets/js/main.js"></script>
       <!-- JSONLD_START -->
@@ -44,7 +45,7 @@
           {
             "@type": "Organization",
             "@id": "https://cynevor.com/#organization",
-            "name": "Cynevor Group",
+            "name": "Cynevor",
             "url": "https://cynevor.com/",
             "logo": {
               "@type": "ImageObject",
@@ -59,7 +60,7 @@
             "@type": "WebSite",
             "@id": "https://cynevor.com/#website",
             "url": "https://cynevor.com/",
-            "name": "Cynevor Group",
+            "name": "Cynevor",
             "description": "Family-led group focused on practical innovation, education, and long-term community impact.",
             "publisher": {
               "@id": "https://cynevor.com/#organization"
@@ -69,8 +70,8 @@
             "@type": "WebPage",
             "@id": "https://cynevor.com/contact.html#webpage",
             "url": "https://cynevor.com/contact.html",
-            "name": "Contact Cynevor Group | Partnerships and Enquiries",
-            "description": "Contact Cynevor Group for partnership enquiries, careers interest, academy updates, or general communication.",
+            "name": "Contact Cynevor | Partnerships and Enquiries",
+            "description": "Contact Cynevor for partnership enquiries, careers interest, academy updates, or general communication.",
             "isPartOf": {
               "@id": "https://cynevor.com/#website"
             },
@@ -88,10 +89,10 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="index.html" aria-label="Cynevor Group Home">
-          <img class="brand-mark" src="assets/images/cynevor-logo-icon.png" alt="Cynevor Group logo" width="128" height="128" decoding="async" />
+        <a class="brand" href="index.html" aria-label="Cynevor Home">
+          <img class="brand-mark" src="assets/images/cynevor-logo-icon.png" alt="Cynevor logo" width="128" height="128" decoding="async" />
           <span class="brand-copy">
-            <span class="brand-title">Cynevor Group</span>
+            <span class="brand-title">Cynevor</span>
             <span class="brand-tagline">Practical innovation with purpose</span>
           </span>
         </a>
@@ -105,18 +106,18 @@
             <li><a href="careers.html">Careers</a></li>
             <li><a href="contact.html" aria-current="page">Contact</a></li>
             <li class="nav-item--dropdown">
-              <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true">Explore</button>
-              <div class="nav-submenu" aria-label="Explore links">
+              <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="explore-menu">Explore</button>
+              <div class="nav-submenu" id="explore-menu" role="group" aria-label="Explore links" aria-hidden="true">
                 <div class="nav-submenu-group">
                   <p class="nav-submenu-title">About Cynevor</p>
-                  <a href="values.html">Values</a>
-                  <a href="dei.html">DEI</a>
+                  <a tabindex="-1" href="values.html">Values</a>
+                  <a tabindex="-1" href="dei.html">DEI</a>
                 </div>
                 <div class="nav-submenu-group">
                   <p class="nav-submenu-title">Ventures</p>
-                  <a href="academy.html">Academy</a>
-                  <a href="foundation.html">Foundation</a>
-                  <a href="ventures.html">Ventures</a>
+                  <a tabindex="-1" href="academy.html">Academy</a>
+                  <a tabindex="-1" href="foundation.html">Foundation</a>
+                  <a tabindex="-1" href="ventures.html">Ventures</a>
                 </div>
               </div>
             </li>
@@ -143,7 +144,7 @@
             </p>
           </article>
           <aside class="hero-panel animate-in" aria-label="Contact summary">
-            <h3>Enquiry pathways</h3>
+            <h2>Enquiry pathways</h2>
             <ul class="list">
               <li>Digital products, websites, apps, and platforms</li>
               <li>Partnership and strategic collaboration</li>
@@ -160,7 +161,7 @@
             <p class="eyebrow">Get in Touch</p>
             <h2 class="section-title">Direct contact details</h2>
             <p>
-              The best way to reach Cynevor Group is by email. We aim to respond to all relevant
+              The best way to reach Cynevor is by email. We aim to respond to all relevant
               enquiries within a reasonable timeframe and will always acknowledge receipt.
             </p>
             <ul class="list">
@@ -179,8 +180,7 @@
               <li>Review our <a href="about.html">About page</a> for background on the group</li>
               <li>Include clear context and purpose in your message</li>
               <li>Use the most relevant pathway for faster routing</li>
-            </ul>
-          </article>
+            </ul>          </article>
         </div>
       </section>
 
@@ -338,7 +338,7 @@
           <div class="contact-form-wrap">
 
             <!-- Success state (shown on valid submission) -->
-            <div class="form-success" id="form-success" role="status" aria-live="polite" tabindex="-1">
+            <div class="form-success" id="form-success" hidden aria-hidden="true" tabindex="-1">
               <h3>Thank you for getting in touch.</h3>
               <p>Your enquiry has been received. We will review fit and respond with next steps as soon as possible.</p>
             </div>
@@ -348,19 +348,27 @@
               ─────────────────────────
               To connect to Formspree:   action="https://formspree.io/f/YOUR_FORM_ID"  method="POST"
               To connect to Netlify:     add  data-netlify="true"  and  name="contact"
-              To connect to a custom endpoint: replace action="#" with your API route and
+              To connect to a custom endpoint: replace the current action with your API route and
                                                handle the fetch() call in the form JS in main.js
             -->
             <form
               class="contact-form"
               id="contact-form"
-              action="#"
+              action="contact.html"
               method="POST"
               aria-label="Contact enquiry form"
             >
 
+              <noscript>
+                <p class="form-noscript-note">
+                  JavaScript is currently disabled. Please email
+                  <a href="mailto:contact@cynevor.com">contact@cynevor.com</a>
+                  so we can respond to your enquiry.
+                </p>
+              </noscript>
+
               <!-- Honeypot field: hidden from real users, filled only by bots -->
-              <div class="form-honeypot" aria-hidden="true">
+              <div class="form-honeypot visually-hidden" aria-hidden="true">
                 <label for="form-trap">Leave this field empty</label>
                 <input type="text" id="form-trap" name="trap" tabindex="-1" autocomplete="off" />
               </div>
@@ -381,7 +389,7 @@
                     aria-describedby="error-name"
                     placeholder="Your full name"
                   />
-                  <p class="field-error" id="error-name" aria-live="polite" hidden>Please enter your name.</p>
+                  <p class="field-error" id="error-name" hidden>Please enter your name.</p>
                 </div>
 
                 <div class="form-field" id="field-email">
@@ -398,7 +406,7 @@
                     aria-describedby="error-email"
                     placeholder="your@email.com"
                   />
-                  <p class="field-error" id="error-email" aria-live="polite" hidden>Please provide a valid email address.</p>
+                  <p class="field-error" id="error-email" hidden>Please provide a valid email address.</p>
                 </div>
               </div>
 
@@ -446,7 +454,7 @@
                   <option value="Academy or Foundation Enquiry">Academy or Foundation Enquiry</option>
                   <option value="General Enquiry">General Enquiry</option>
                 </select>
-                <p class="field-error" id="error-type" aria-live="polite" hidden>Please select an enquiry type.</p>
+                <p class="field-error" id="error-type" hidden>Please select an enquiry type.</p>
               </div>
 
               <!-- Message -->
@@ -462,15 +470,15 @@
                   aria-describedby="error-message"
                   placeholder="Please tell us a little about your enquiry&hellip;"
                 ></textarea>
-                <p class="field-error" id="error-message" aria-live="polite" hidden>Please tell us a little more about your enquiry.</p>
+                <p class="field-error" id="error-message" hidden>Please tell us a little more about your enquiry.</p>
               </div>
 
               <!-- Submit row -->
               <div class="form-submit-row">
                 <button type="submit" class="btn btn-primary">Send Enquiry</button>
                 <p class="form-privacy-note">
-                  We handle your information in accordance with our
-                  <a href="privacy.html">Privacy Policy</a>.
+                  By submitting this form, you agree that your information will be used to respond
+                  to your enquiry. See our <a href="privacy.html">Privacy Policy</a>.
                 </p>
               </div>
 
@@ -500,14 +508,14 @@
       <div class="container">
         <div class="footer-grid">
           <article class="footer-brand">
-            <img class="footer-brand-logo" src="assets/images/cynevor-logo-horizontal-web.png" alt="Cynevor Group" width="1400" height="484" decoding="async" />
+            <img class="footer-brand-logo" src="assets/images/cynevor-logo-horizontal-web.png" alt="Cynevor" width="1400" height="484" decoding="async" />
             <p>Practical innovation with purpose, led by stewardship and long-term responsibility.</p>
           </article>
           <nav aria-label="Footer links">
-            <h4>Explore</h4>
+            <h3>Explore</h3>
             <div class="footer-link-groups">
               <section class="footer-link-group" aria-label="Company links">
-                <h5>Company</h5>
+                <h4>Company</h4>
                 <ul class="footer-links">
                   <li><a href="about.html">About</a></li>
                   <li><a href="mission.html">Mission</a></li>
@@ -517,7 +525,7 @@
                 </ul>
               </section>
               <section class="footer-link-group" aria-label="Initiatives links">
-                <h5>Initiatives</h5>
+                <h4>Initiatives</h4>
                 <ul class="footer-links">
                   <li><a href="academy.html">Academy</a></li>
                   <li><a href="careers.html">Careers</a></li>
@@ -527,11 +535,12 @@
                 </ul>
               </section>
               <section class="footer-link-group" aria-label="Legal links">
-                <h5>Legal</h5>
+                <h4>Legal</h4>
                 <ul class="footer-links">
                   <li><a href="legal/index.html">Legal Hub</a></li>
                   <li><a href="privacy.html">Privacy Policy</a></li>
                   <li><a href="terms.html">Terms of Use</a></li>
+                  <li><a href="accessibility.html">Accessibility Statement</a></li>
                   <li><a href="legal/cookie-policy.html">Cookie Policy</a></li>
                   <li><a href="legal/brand-rights.html">Brand Rights &amp; Trade Mark Notice</a></li>
                 </ul>
@@ -539,14 +548,84 @@
             </div>
           </nav>
           <article>
-            <h4>Social</h4>
+            <h3>Social</h3>
             <ul class="social-links">
-              <li><a href="https://www.linkedin.com/company/cynevor-group" aria-label="Cynevor Group on LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="https://www.facebook.com/cynevor" aria-label="Cynevor Group on Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-              <!-- Placeholder social links: replace with official profiles at launch. -->
-              <li><a href="https://www.youtube.com/@Cynevor" aria-label="Cynevor Group on YouTube" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-              <li><span aria-label="Instagram profile coming soon">Instagram (coming soon)</span></li>
+              <li><a href="https://www.linkedin.com/company/cynevor-group" aria-label="Cynevor on LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.facebook.com/cynevor" aria-label="Cynevor on Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="https://www.youtube.com/@Cynevor" aria-label="Cynevor on YouTube" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              <li><a href="https://www.tiktok.com/@kind_basket?_r=1&_t=ZN-96srSsj4Tg6" aria-label="Cynevor on TikTok" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+              <li><span>Instagram Coming Soon</span></li>
             </ul>
+            <button
+              class="a11y-settings-trigger"
+              type="button"
+              data-a11y-trigger
+              aria-expanded="false"
+              aria-controls="a11y-settings-panel"
+            >
+              Accessibility settings
+            </button>
+            <section
+              class="a11y-settings-panel"
+              id="a11y-settings-panel"
+              data-a11y-panel
+              aria-labelledby="a11y-settings-title"
+
+              hidden
+            >
+              <h4 id="a11y-settings-title">Accessibility settings</h4>
+              <p>Adjust how the site looks and feels on this device. These settings are saved in your browser.</p>
+              <form class="a11y-settings-form" data-a11y-form>
+                <div class="a11y-settings-field">
+                  <label for="a11y-text-size">Text size</label>
+                  <select id="a11y-text-size" name="text-size">
+                    <option value="default">Default</option>
+                    <option value="large">Large</option>
+                    <option value="x-large">Extra large</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-field">
+                  <label for="a11y-contrast">Contrast</label>
+                  <select id="a11y-contrast" name="contrast">
+                    <option value="default">Default</option>
+                    <option value="high">High contrast</option>
+                    <option value="soft">Soft contrast</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-field">
+                  <label for="a11y-motion">Motion</label>
+                  <select id="a11y-motion" name="motion">
+                    <option value="system">System/default</option>
+                    <option value="reduced">Reduced motion</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-field">
+                  <label for="a11y-reading-width">Reading width</label>
+                  <select id="a11y-reading-width" name="reading-width">
+                    <option value="default">Default</option>
+                    <option value="comfortable">Comfortable width</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-field">
+                  <label for="a11y-spacing">Text spacing</label>
+                  <select id="a11y-spacing" name="spacing">
+                    <option value="default">Default</option>
+                    <option value="increased">Increased spacing</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-field">
+                  <label for="a11y-link-style">Link visibility</label>
+                  <select id="a11y-link-style" name="link-style">
+                    <option value="default">Default</option>
+                    <option value="underline">Always underline links</option>
+                  </select>
+                </div>
+                <div class="a11y-settings-actions">
+                  <button type="button" data-a11y-close>Close</button>
+                  <button type="button" data-a11y-reset>Reset settings</button>
+                </div>
+              </form>
+            </section>
           </article>
         </div>
         <p class="footer-fine">&copy; 2026 Cynevor. Cynevor™ and Cynevor Group™ are founder-owned trade marks claimed in connection with the Cynevor project. All rights reserved.</p>
