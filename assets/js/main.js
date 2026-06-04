@@ -264,10 +264,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     const successPanel = document.getElementById("form-success");
+    const errorSummary = document.getElementById("form-error-summary");
+    const errorSummaryList = errorSummary
+      ? errorSummary.querySelector("[data-error-summary-list]")
+      : null;
 
     if (successPanel) {
       successPanel.hidden = true;
-      successPanel.setAttribute("aria-hidden", "true");
+      successPanel.removeAttribute("role");
+      successPanel.removeAttribute("aria-live");
+    }
+
+    if (errorSummary) {
+      errorSummary.hidden = true;
     }
 
     // Field definitions: id suffix, validation function, error message
@@ -302,23 +311,63 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     ];
 
-    const setFieldValidity = (field, input, isValid) => {
+    const setFieldValidity = (field, input, isValid, shouldShowError) => {
       const wrap = document.getElementById(field.id);
       if (!wrap) return;
-      wrap.classList.toggle("is-invalid", !isValid);
+      const showError = shouldShowError && !isValid;
+      wrap.classList.toggle("is-invalid", showError);
 
       if (input) {
-        if (isValid) {
-          input.removeAttribute("aria-invalid");
-        } else {
+        if (showError) {
           input.setAttribute("aria-invalid", "true");
+          input.setAttribute("aria-describedby", field.errorId);
+        } else {
+          input.removeAttribute("aria-invalid");
+          input.removeAttribute("aria-describedby");
         }
       }
 
       const errorMessage = document.getElementById(field.errorId);
       if (errorMessage) {
-        errorMessage.hidden = isValid;
+        errorMessage.hidden = !showError;
       }
+    };
+
+    const hideErrorSummary = () => {
+      if (errorSummary) {
+        errorSummary.hidden = true;
+        errorSummary.removeAttribute("role");
+        errorSummary.removeAttribute("aria-live");
+      }
+
+      if (errorSummaryList) {
+        errorSummaryList.replaceChildren();
+      }
+    };
+
+    const showErrorSummary = (invalidFields) => {
+      if (!errorSummary || !errorSummaryList) {
+        return;
+      }
+
+      errorSummaryList.replaceChildren();
+      invalidFields.forEach(({ field, input }) => {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `#${input.id}`;
+        link.textContent = field.error;
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          input.focus();
+        });
+        item.appendChild(link);
+        errorSummaryList.appendChild(item);
+      });
+
+      errorSummary.hidden = false;
+      errorSummary.setAttribute("role", "alert");
+      errorSummary.setAttribute("aria-live", "polite");
+      errorSummary.focus();
     };
 
     // Live validation: clear error as soon as field becomes valid
@@ -327,7 +376,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!input) return;
       const eventType = input.tagName === "SELECT" ? "change" : "input";
       input.addEventListener(eventType, () => {
-        setFieldValidity(field, input, field.validate(input.value));
+        const isValid = field.validate(input.value);
+        const hadError = input.getAttribute("aria-invalid") === "true";
+        setFieldValidity(field, input, isValid, hadError);
+
+        if (isValid && fields.every((currentField) => {
+          const currentInput = document.getElementById(currentField.inputId);
+          return currentInput && currentInput.getAttribute("aria-invalid") !== "true";
+        })) {
+          hideErrorSummary();
+        }
       });
     });
 
@@ -344,22 +402,27 @@ document.addEventListener("DOMContentLoaded", () => {
       // ── Validate required fields ────────────────────
       let isFormValid = true;
       let firstInvalidInput = null;
+      const invalidFields = [];
 
       fields.forEach((field) => {
         const input = document.getElementById(field.inputId);
         if (!input) return;
         const valid = field.validate(input.value);
-        setFieldValidity(field, input, valid);
+        setFieldValidity(field, input, valid, true);
         if (!valid) {
           isFormValid = false;
           if (!firstInvalidInput) firstInvalidInput = input;
+          invalidFields.push({ field, input });
         }
       });
 
       if (!isFormValid) {
-        if (firstInvalidInput) firstInvalidInput.focus();
+        showErrorSummary(invalidFields);
+        if (!errorSummary && firstInvalidInput) firstInvalidInput.focus();
         return;
       }
+
+      hideErrorSummary();
 
       // ── Submit ──────────────────────────────────────
       //
@@ -393,7 +456,6 @@ document.addEventListener("DOMContentLoaded", () => {
       contactForm.style.display = "none";
       if (successPanel) {
         successPanel.hidden = false;
-        successPanel.setAttribute("aria-hidden", "false");
         successPanel.setAttribute("role", "status");
         successPanel.setAttribute("aria-live", "polite");
         successPanel.classList.add("is-visible");

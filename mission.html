@@ -90,7 +90,7 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html" aria-label="Cynevor Home">
-          <img class="brand-mark" src="assets/images/cynevor-logo-icon.png" alt="Cynevor logo" width="128" height="128" decoding="async" />
+          <img class="brand-mark" src="assets/images/cynevor-logo-icon.png" alt="" width="128" height="128" decoding="async" />
           <span class="brand-copy">
             <span class="brand-title">Cynevor</span>
             <span class="brand-tagline">Practical innovation with purpose</span>
@@ -275,7 +275,7 @@
               <li><a href="https://www.linkedin.com/company/cynevor-group" aria-label="Cynevor on LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a href="https://www.facebook.com/cynevor" aria-label="Cynevor on Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>
               <li><a href="https://www.youtube.com/@Cynevor" aria-label="Cynevor on YouTube" target="_blank" rel="noopener noreferrer">YouTube</a></li>
-              <li><a href="https://www.tiktok.com/@kind_basket?_r=1&_t=ZN-96srSsj4Tg6" aria-label="Cynevor on TikTok" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+              <li><!-- TODO: add official Cynevor TikTok URL --><span>TikTok Coming Soon</span></li>
               <li><span>Instagram Coming Soon</span></li>
             </ul>
             <button
@@ -298,50 +298,38 @@
               <h4 id="a11y-settings-title">Accessibility settings</h4>
               <p>Adjust how the site looks and feels on this device. These settings are saved in your browser.</p>
               <form class="a11y-settings-form" data-a11y-form>
-                <div class="a11y-settings-field">
-                  <label for="a11y-text-size">Text size</label>
-                  <select id="a11y-text-size" name="text-size">
-                    <option value="default">Default</option>
-                    <option value="large">Large</option>
-                    <option value="x-large">Extra large</option>
-                  </select>
-                </div>
-                <div class="a11y-settings-field">
-                  <label for="a11y-contrast">Contrast</label>
-                  <select id="a11y-contrast" name="contrast">
-                    <option value="default">Default</option>
-                    <option value="high">High contrast</option>
-                    <option value="soft">Soft contrast</option>
-                  </select>
-                </div>
-                <div class="a11y-settings-field">
-                  <label for="a11y-motion">Motion</label>
-                  <select id="a11y-motion" name="motion">
-                    <option value="system">System/default</option>
-                    <option value="reduced">Reduced motion</option>
-                  </select>
-                </div>
-                <div class="a11y-settings-field">
-                  <label for="a11y-reading-width">Reading width</label>
-                  <select id="a11y-reading-width" name="reading-width">
-                    <option value="default">Default</option>
-                    <option value="comfortable">Comfortable width</option>
-                  </select>
-                </div>
-                <div class="a11y-settings-field">
-                  <label for="a11y-spacing">Text spacing</label>
-                  <select id="a11y-spacing" name="spacing">
-                    <option value="default">Default</option>
-                    <option value="increased">Increased spacing</option>
-                  </select>
-                </div>
-                <div class="a11y-settings-field">
-                  <label for="a11y-link-style">Link visibility</label>
-                  <select id="a11y-link-style" name="link-style">
-                    <option value="default">Default</option>
-                    <option value="underline">Always underline links</option>
-                  </select>
-                </div>
+                <fieldset class="a11y-settings-field">
+                  <legend>Text size</legend>
+                  <label><input type="radio" name="text-size" value="default" checked /> Default</label>
+                  <label><input type="radio" name="text-size" value="large" /> Large</label>
+                  <label><input type="radio" name="text-size" value="x-large" /> Extra large</label>
+                </fieldset>
+                <fieldset class="a11y-settings-field">
+                  <legend>Contrast</legend>
+                  <label><input type="radio" name="contrast" value="default" checked /> Default</label>
+                  <label><input type="radio" name="contrast" value="high" /> High contrast</label>
+                  <label><input type="radio" name="contrast" value="soft" /> Soft contrast</label>
+                </fieldset>
+                <fieldset class="a11y-settings-field">
+                  <legend>Motion</legend>
+                  <label><input type="radio" name="motion" value="system" checked /> System/default</label>
+                  <label><input type="radio" name="motion" value="reduced" /> Reduced motion</label>
+                </fieldset>
+                <fieldset class="a11y-settings-field">
+                  <legend>Reading width</legend>
+                  <label><input type="radio" name="reading-width" value="default" checked /> Default</label>
+                  <label><input type="radio" name="reading-width" value="comfortable" /> Comfortable</label>
+                </fieldset>
+                <fieldset class="a11y-settings-field">
+                  <legend>Text spacing</legend>
+                  <label><input type="radio" name="spacing" value="default" checked /> Default</label>
+                  <label><input type="radio" name="spacing" value="increased" /> Increased</label>
+                </fieldset>
+                <fieldset class="a11y-settings-field">
+                  <legend>Link visibility</legend>
+                  <label><input type="radio" name="link-style" value="default" checked /> Default</label>
+                  <label><input type="radio" name="link-style" value="underline" /> Always underline</label>
+                </fieldset>
                 <div class="a11y-settings-actions">
                   <button type="button" data-a11y-close>Close</button>
                   <button type="button" data-a11y-reset>Reset settings</button>

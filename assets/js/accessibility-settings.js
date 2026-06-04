@@ -11,6 +11,15 @@
     linkStyle: "default"
   };
 
+  const allowedValues = {
+    textSize: ["default", "large", "x-large"],
+    contrast: ["default", "high", "soft"],
+    motion: ["system", "reduced"],
+    readingWidth: ["default", "comfortable"],
+    spacing: ["default", "increased"],
+    linkStyle: ["default", "underline"]
+  };
+
   const attrMap = {
     textSize: "data-text-size",
     contrast: "data-contrast",
@@ -44,6 +53,15 @@
     });
   };
 
+  const sanitizeSettings = (settings) => {
+    const source = settings && typeof settings === "object" ? settings : {};
+    return Object.keys(defaults).reduce((result, key) => {
+      const value = source[key];
+      result[key] = allowedValues[key].includes(value) ? value : defaults[key];
+      return result;
+    }, {});
+  };
+
   const readStoredSettings = () => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -51,7 +69,7 @@
         return { ...defaults };
       }
       const parsed = JSON.parse(raw);
-      return { ...defaults, ...parsed };
+      return sanitizeSettings(parsed);
     } catch (_error) {
       return { ...defaults };
     }
@@ -71,6 +89,15 @@ document.addEventListener("DOMContentLoaded", () => {
     readingWidth: "default",
     spacing: "default",
     linkStyle: "default"
+  };
+
+  const allowedValues = {
+    textSize: ["default", "large", "x-large"],
+    contrast: ["default", "high", "soft"],
+    motion: ["system", "reduced"],
+    readingWidth: ["default", "comfortable"],
+    spacing: ["default", "increased"],
+    linkStyle: ["default", "underline"]
   };
 
   const attrMap = {
@@ -105,6 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let sessionSettings = { ...defaults };
 
+  const sanitizeSettings = (settings) => {
+    const source = settings && typeof settings === "object" ? settings : {};
+    return Object.keys(defaults).reduce((result, key) => {
+      const value = source[key];
+      result[key] = allowedValues[key].includes(value) ? value : defaults[key];
+      return result;
+    }, {});
+  };
+
   const shouldRemoveAttribute = (key, value) => {
     if (value === undefined || value === null || value === "") {
       return true;
@@ -128,20 +164,21 @@ document.addEventListener("DOMContentLoaded", () => {
         return { ...defaults };
       }
       const parsed = JSON.parse(raw);
-      return { ...defaults, ...parsed };
+      return sanitizeSettings(parsed);
     } catch (_error) {
       return { ...defaults };
     }
   };
 
   const saveSettings = (settings) => {
-    sessionSettings = { ...settings };
+    const safeSettings = sanitizeSettings(settings);
+    sessionSettings = { ...safeSettings };
     if (!canUseStorage) {
       return;
     }
 
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(safeSettings));
     } catch (_error) {
       // Ignore storage errors and keep session-only behavior.
     }
@@ -174,24 +211,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const collectFromForm = () => {
     const data = new FormData(form);
-    return {
+    return sanitizeSettings({
       textSize: String(data.get("text-size") || defaults.textSize),
       contrast: String(data.get("contrast") || defaults.contrast),
       motion: String(data.get("motion") || defaults.motion),
       readingWidth: String(data.get("reading-width") || defaults.readingWidth),
       spacing: String(data.get("spacing") || defaults.spacing),
       linkStyle: String(data.get("link-style") || defaults.linkStyle)
-    };
+    });
   };
 
   const syncForm = (settings) => {
+    const safeSettings = sanitizeSettings(settings);
     const mapping = [
-      ["text-size", settings.textSize],
-      ["contrast", settings.contrast],
-      ["motion", settings.motion],
-      ["reading-width", settings.readingWidth],
-      ["spacing", settings.spacing],
-      ["link-style", settings.linkStyle]
+      ["text-size", safeSettings.textSize],
+      ["contrast", safeSettings.contrast],
+      ["motion", safeSettings.motion],
+      ["reading-width", safeSettings.readingWidth],
+      ["spacing", safeSettings.spacing],
+      ["link-style", safeSettings.linkStyle]
     ];
 
     mapping.forEach(([name, value]) => {
@@ -207,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
     trigger.setAttribute("aria-expanded", String(open));
 
     if (open) {
-      const firstControl = form.querySelector("select, button");
+      const firstControl = form.querySelector("input, button");
       if (firstControl) {
         firstControl.focus();
       }
